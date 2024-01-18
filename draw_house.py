@@ -21,7 +21,12 @@ def move_to(x, y):
 def draw_house_outline(
     base_width: int = 250, base_height: int = 100, roof_height: int = 100
 ):
-    """Draws the outline of a 2D rectangular house"""
+    """Draws the outline of a 2D rectangular house with a triangular roof.
+
+    :param base_width: The width of the base of the house
+    :param base_height: The height of the base of the house
+    :param roof_height: The height of the roof of the house
+    """
     # Draw the base
     forward(base_width)
     left(90)
