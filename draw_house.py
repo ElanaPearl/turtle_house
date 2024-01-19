@@ -13,7 +13,9 @@ from turtle import (
 
 def move_to(x, y):
     """Move the turtle to position (x, y) without drawing."""
-    pass
+    penup()
+    setpos(x, y)
+    pendown()
 
 
 def draw_house_outline():
