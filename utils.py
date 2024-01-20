@@ -1,5 +1,15 @@
 import numpy as np
 
+from turtle import (
+    begin_fill,
+    circle,
+    end_fill,
+    color,
+    fillcolor,
+    forward,
+    left
+)
+
 
 def get_roof_angles(
     base_width: int, base_height: int, roof_height: int
@@ -24,3 +34,37 @@ def get_roof_angles(
     roof_top_angle = 2 * (90 - roof_base_angle)
 
     return roof_base_angle, roof_top_angle, roof_length
+
+def filled_circle(radius: int, circle_color: str):
+    '''
+    Creates a circle that is filled in with a color
+    
+    :param radius: the radius of the circle
+    :param circle_color: fill color
+    '''
+    color(circle_color,circle_color)
+    begin_fill()
+    circle(radius)
+    end_fill()
+
+def filled_rectangle(width: int, height: int, color: str):
+    '''
+    Creates a rectangle that is filled in with a color
+    
+    :param height: the width of the rectangle
+    :param width: the height of the rectangle
+    :param color: fill color
+    '''
+    
+    fillcolor(color) 
+    begin_fill() 
+    forward(width) 
+    left(90) 
+    forward(height) 
+    left(90) 
+    forward(width) 
+    left(90) 
+    forward(height) 
+    left(90) 
+    end_fill()
+
