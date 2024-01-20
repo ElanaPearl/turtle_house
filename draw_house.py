@@ -10,7 +10,7 @@ from turtle import (
     setpos,
 )
 
-from utils import *
+from utils import filled_circle, filled_rectangle, get_roof_angles
 
 
 def move_to(x, y):
