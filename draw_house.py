@@ -8,7 +8,6 @@ from turtle import (
     penup,
     right,
     setpos,
-    mainloop
 )
 
 from utils import *
@@ -64,11 +63,11 @@ def draw_door(width: int = 10, height: int = 20, color: str = "white"):
 
     filled_rectangle(width, height, color)
     penup()
-    forward(int(0.75*width))
+    forward(int(0.75 * width))
     left(90)
-    forward(int(0.5*height))
+    forward(int(0.5 * height))
     pendown()
-    circle(int(0.125*width))
+    circle(int(0.125 * width))
 
 
 def draw_garage_door(width: int = 40, height: int = 20, color: str = "white"):
@@ -81,10 +80,15 @@ def draw_garage_door(width: int = 40, height: int = 20, color: str = "white"):
     filled_rectangle(width, height, color)
 
 
-def draw_tree(trunk_width: int = 10, trunk_height: int = 100, leaf_radius: int = 50,
-              trunk_color: str = "brown", leaf_color: str = "green"):
+def draw_tree(
+    trunk_width: int = 10,
+    trunk_height: int = 100,
+    leaf_radius: int = 50,
+    trunk_color: str = "brown",
+    leaf_color: str = "green",
+):
     """
-    Draws outline of tree and colors it. 
+    Draws outline of tree and colors it.
     Tree is constructed as a circle on top of a rectangle
 
     :param trunk_width: width of trunk
@@ -93,7 +97,7 @@ def draw_tree(trunk_width: int = 10, trunk_height: int = 100, leaf_radius: int =
     :param leaf_radius: radius of leaf
     :param leaf_color: color of leaf
     """
-    filled_circle(leaf_radius,leaf_color)
+    filled_circle(leaf_radius, leaf_color)
     right(180)
     filled_rectangle(trunk_width, trunk_height, trunk_color)
 
@@ -107,37 +111,37 @@ def draw_window(width: int = 40, height: int = 20, color: str = "white"):
     :param height: height of garage door
     :param color: color of garage door
     """
-    
+
     filled_rectangle(width, height, color)
-    forward(int(0.5*width))
+    forward(int(0.5 * width))
     left(90)
     forward(height)
     right(90)
-    forward(int(0.5*width))
+    forward(int(0.5 * width))
     right(90)
-    forward(int(0.5*height))
+    forward(int(0.5 * height))
     right(90)
     forward(width)
 
 
-def draw_clouds(radius: int = 50, cloud_color: str = "blue"):
+def draw_cloud(radius: int = 50, cloud_color: str = "blue"):
     """
-    Draws outline of clouds and fills them in.
+    Draws outline of cloud and fills them in.
     Clouds are constructed as a cluster of overlapping circles
 
     :param radius: radius of each overlapping circle
     :param cloud_color: color of cloud
     """
 
-    filled_circle(radius,cloud_color)
+    filled_circle(radius, cloud_color)
     forward(radius)
-    filled_circle(radius,cloud_color)
+    filled_circle(radius, cloud_color)
     right(90)
-    filled_circle(radius,cloud_color)
+    filled_circle(radius, cloud_color)
     right(90)
-    filled_circle(radius,cloud_color)
+    filled_circle(radius, cloud_color)
     right(90)
-    filled_circle(radius,cloud_color)
+    filled_circle(radius, cloud_color)
     right(90)
 
 
