@@ -8,6 +8,7 @@ from turtle import (
     penup,
     right,
     setpos,
+    setheading
 )
 
 from utils import filled_circle, filled_rectangle, get_roof_angles
@@ -21,7 +22,7 @@ def move_to(x, y):
 
 
 def draw_house_outline(
-    base_width: int = 250, base_height: int = 100, roof_height: int = 100
+    base_width: int = 250, base_height: int = 150, roof_height: int = 100
 ):
     """Draws the outline of a 2D rectangular house with a triangular roof.
 
@@ -52,7 +53,7 @@ def draw_house_outline(
     forward(roof_length)
 
 
-def draw_door(width: int = 10, height: int = 20, color: str = "white"):
+def draw_door(width: int = 30, height: int = 60, color: str = "white"):
     """
     Draw a standard door.
 
@@ -70,7 +71,7 @@ def draw_door(width: int = 10, height: int = 20, color: str = "white"):
     circle(int(0.125 * width))
 
 
-def draw_garage_door(width: int = 40, height: int = 20, color: str = "white"):
+def draw_garage_door(width: int = 60, height: int = 60, color: str = "white"):
     """
     Draw a garage door
     :param width: width of garage door
@@ -82,8 +83,8 @@ def draw_garage_door(width: int = 40, height: int = 20, color: str = "white"):
 
 def draw_tree(
     trunk_width: int = 10,
-    trunk_height: int = 100,
-    leaf_radius: int = 50,
+    trunk_height: int = 50,
+    leaf_radius: int = 20,
     trunk_color: str = "brown",
     leaf_color: str = "green",
 ):
@@ -102,7 +103,7 @@ def draw_tree(
     filled_rectangle(trunk_width, trunk_height, trunk_color)
 
 
-def draw_window(width: int = 40, height: int = 20, color: str = "white"):
+def draw_window(width: int = 20, height: int = 40, color: str = "white"):
     """
     Draw a window
     cross lines exactly halfway of width and height
@@ -124,7 +125,7 @@ def draw_window(width: int = 40, height: int = 20, color: str = "white"):
     forward(width)
 
 
-def draw_cloud(radius: int = 50, cloud_color: str = "blue"):
+def draw_cloud(radius: int = 20, cloud_color: str = "blue"):
     """
     Draws outline of cloud and fills them in.
     Clouds are constructed as a cluster of overlapping circles
@@ -148,22 +149,50 @@ def draw_cloud(radius: int = 50, cloud_color: str = "blue"):
 def main():
     getscreen()
 
-    draw_house_outline()
+    start = (-200, -100)
+    base_width = 250
+    base_height = 150
 
+    move_to(start[0], start[1])
+
+    draw_house_outline(base_width=base_width, base_height=base_height)
+    
+    move_to(start[0] + base_width - 50, start[1])
+    setheading(0)
     draw_door()
 
+    move_to(start[0] + 20, start[1])
+    setheading(0)
     draw_garage_door()
+    move_to(start[0] + 100, start[1])
+    setheading(0)
     draw_garage_door()
 
+    move_to(start[0] + 20, start[1] + (base_height / 2))
+    setheading(0)
     draw_window()
+    move_to(start[0] + 70, start[1] + (base_height / 2))
+    setheading(0)
     draw_window()
+    move_to(start[0] + 120, start[1] + (base_height / 2))
+    setheading(0)
     draw_window()
+    move_to(start[0] + 170, start[1] + (base_height / 2))
+    setheading(0)
     draw_window()
 
+    move_to(start[0] + base_width + 50, start[1] + 50)
+    setheading(0)
     draw_tree()
+    move_to(start[0] + base_width + 100, start[1] + 50)
+    setheading(0)
     draw_tree()
 
+    move_to(100, 100)
+    setheading(0)
     draw_cloud()
+    move_to(-300, 100)
+    setheading(0)
     draw_cloud()
 
     mainloop()
