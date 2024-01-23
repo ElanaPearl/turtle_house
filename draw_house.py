@@ -10,8 +10,8 @@ from turtle import (
     pendown,
     penup,
     right,
+    setheading,
     setpos,
-    setheading
 )
 
 from utils import filled_circle, filled_rectangle, get_roof_angles
@@ -118,7 +118,7 @@ def draw_window(width: int = 20, height: int = 40, color: str = "white"):
     :param height: height of garage door
     :param color: color of garage door
     """
-    
+
     filled_rectangle(width, height, color)
     forward(int(0.5 * width))
     left(90)
@@ -146,11 +146,9 @@ def draw_cloud(radius: int = 20, cloud_color: str = "blue"):
     for _ in range(4):
         filled_circle(radius, cloud_color)
         right(90)
-   
 
 
 def main():
-
     # Open the screen
     getscreen()
 
@@ -187,34 +185,34 @@ def main():
     setheading(0)
 
     # Draw 4 windows in different psitions
-    draw_window() # First window
+    draw_window()  # First window
     move_to(start[0] + 70, start[1] + (base_height / 2))
     setheading(0)
-    draw_window() # Second window
+    draw_window()  # Second window
     move_to(start[0] + 120, start[1] + (base_height / 2))
     setheading(0)
-    draw_window() # Third window
+    draw_window()  # Third window
     move_to(start[0] + 170, start[1] + (base_height / 2))
     setheading(0)
-    draw_window() # Fourth window
+    draw_window()  # Fourth window
 
     move_to(start[0] + base_width + 50, start[1] + 50)
     setheading(0)
 
     # Draw the trees
-    draw_tree() # First tree
+    draw_tree()  # First tree
     move_to(start[0] + base_width + 100, start[1] + 50)
     setheading(0)
-    draw_tree() # Second tree
+    draw_tree()  # Second tree
 
     move_to(100, 100)
     setheading(0)
 
     # Draw the clouds
-    draw_cloud() # First cloud
+    draw_cloud()  # First cloud
     move_to(-300, 100)
     setheading(0)
-    draw_cloud() # Second cloud
+    draw_cloud()  # Second cloud
 
     mainloop()
 
