@@ -17,7 +17,7 @@ from turtle import (
 from utils import filled_circle, filled_rectangle, get_roof_angles
 
 
-def move_to(x, y):
+def move_to(x: int = 1, y: int = 1):
     """Move the turtle to position (x, y) without drawing."""
     penup()
     setpos(x, y)
