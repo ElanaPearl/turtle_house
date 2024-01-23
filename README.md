@@ -1,4 +1,4 @@
-### BIODS 253 HW1: Turtle house
+### BIODS 253 HW2: Turtle house
 Group: Betty Xiong, Elana Simon, Joseph Boen, Max Schuessler
 
 ### Project description
