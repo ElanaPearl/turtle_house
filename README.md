@@ -6,13 +6,16 @@ This repo implements drawing a house with several windows, doors, trees and clou
 
 ### Instructions to run
 
-Create / activate conda environment:
+# Create a local copy:
+In a first step, clone this repository by using
+`git clone https://github.com/ElanaPearl/turtle_house.git` or `git clone git@github.com:ElanaPearl/turtle_house.git`
 
+# Install dependencies: create a conda environment
 `conda env create -f env.yml`
 
 `conda activate bds253`
 
-Draw house:
-
+# Test the implementation
+To check the drawin/implementation, run the following draw_house.py the following way:
 `python draw_house.py`
 
