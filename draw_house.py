@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+# Load paackages required for drawing
 from turtle import (
     circle,
     forward,
@@ -98,8 +101,11 @@ def draw_tree(
     :param leaf_radius: radius of leaf
     :param leaf_color: color of leaf
     """
+    # Draw the leafs
     filled_circle(leaf_radius, leaf_color)
     right(180)
+
+    # Draw the trunk
     filled_rectangle(trunk_width, trunk_height, trunk_color)
 
 
@@ -112,7 +118,7 @@ def draw_window(width: int = 20, height: int = 40, color: str = "white"):
     :param height: height of garage door
     :param color: color of garage door
     """
-
+    
     filled_rectangle(width, height, color)
     forward(int(0.5 * width))
     left(90)
@@ -133,67 +139,82 @@ def draw_cloud(radius: int = 20, cloud_color: str = "blue"):
     :param radius: radius of each overlapping circle
     :param cloud_color: color of cloud
     """
-
+    # Draw clowd consisting of 5 circles:
     filled_circle(radius, cloud_color)
     forward(radius)
-    filled_circle(radius, cloud_color)
-    right(90)
-    filled_circle(radius, cloud_color)
-    right(90)
-    filled_circle(radius, cloud_color)
-    right(90)
-    filled_circle(radius, cloud_color)
-    right(90)
+
+    for _ in range(4):
+        filled_circle(radius, cloud_color)
+        right(90)
+   
 
 
 def main():
+
+    # Open the screen
     getscreen()
 
+    # Set the starting point
     start = (-200, -100)
+
+    # Set the base parameters
     base_width = 250
     base_height = 150
 
+    # Move to the starting point
     move_to(start[0], start[1])
 
+    # Draw the house
     draw_house_outline(base_width=base_width, base_height=base_height)
-    
     move_to(start[0] + base_width - 50, start[1])
     setheading(0)
+
+    # Draw the door
     draw_door()
 
     move_to(start[0] + 20, start[1])
     setheading(0)
+
+    # Draw the garage door
     draw_garage_door()
     move_to(start[0] + 100, start[1])
     setheading(0)
+
+    # Draw the other garage door
     draw_garage_door()
 
     move_to(start[0] + 20, start[1] + (base_height / 2))
     setheading(0)
-    draw_window()
+
+    # Draw 4 windows in different psitions
+    draw_window() # First window
     move_to(start[0] + 70, start[1] + (base_height / 2))
     setheading(0)
-    draw_window()
+    draw_window() # Second window
     move_to(start[0] + 120, start[1] + (base_height / 2))
     setheading(0)
-    draw_window()
+    draw_window() # Third window
     move_to(start[0] + 170, start[1] + (base_height / 2))
     setheading(0)
-    draw_window()
+    draw_window() # Fourth window
 
     move_to(start[0] + base_width + 50, start[1] + 50)
     setheading(0)
-    draw_tree()
+
+    # Draw the trees
+    draw_tree() # First tree
     move_to(start[0] + base_width + 100, start[1] + 50)
     setheading(0)
-    draw_tree()
+    draw_tree() # Second tree
 
     move_to(100, 100)
     setheading(0)
-    draw_cloud()
+
+    # Draw the clouds
+    draw_cloud() # First cloud
     move_to(-300, 100)
     setheading(0)
-    draw_cloud()
+    draw_cloud() # Second cloud
 
     mainloop()
 
