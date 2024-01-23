@@ -33,7 +33,9 @@ def get_roof_angles(
     # Calculate the angle between the two roof sides
     roof_top_angle = 2 * (90 - roof_base_angle)
 
+    # Return the roof base angle, roof top angle and roof length
     return roof_base_angle, roof_top_angle, roof_length
+
 
 def filled_circle(radius: int, circle_color: str):
     '''
@@ -47,6 +49,7 @@ def filled_circle(radius: int, circle_color: str):
     circle(radius)
     end_fill()
 
+
 def filled_rectangle(width: int, height: int, color: str):
     '''
     Creates a rectangle that is filled in with a color
@@ -56,8 +59,11 @@ def filled_rectangle(width: int, height: int, color: str):
     :param color: fill color
     '''
     
+    # Fill the color
     fillcolor(color) 
     begin_fill() 
+
+    # Now draw the form
     forward(width) 
     left(90) 
     forward(height) 
@@ -66,5 +72,7 @@ def filled_rectangle(width: int, height: int, color: str):
     left(90) 
     forward(height) 
     left(90) 
+
+    # Complete
     end_fill()
 
