@@ -1,16 +1,7 @@
 #!/usr/bin/env python
 
 import numpy as np
-
-from turtle import (
-    begin_fill,
-    circle,
-    end_fill,
-    color,
-    fillcolor,
-    forward,
-    left
-)
+from svg_turtle import SvgTurtle
 
 
 def get_roof_angles(
@@ -39,42 +30,43 @@ def get_roof_angles(
     return roof_base_angle, roof_top_angle, roof_length
 
 
-def filled_circle(radius: int, circle_color: str):
-    '''
+def filled_circle(t: SvgTurtle, radius: int, circle_color: str):
+    """
     Creates a circle that is filled in with a color
-    
+
+    :param t: the turtle
     :param radius: the radius of the circle
     :param circle_color: fill color
-    '''
-    color(circle_color,circle_color)
-    begin_fill()
-    circle(radius)
-    end_fill()
+    """
+    t.color(circle_color, circle_color)
+    t.begin_fill()
+    t.circle(radius)
+    t.end_fill()
 
 
-def filled_rectangle(width: int, height: int, color: str):
-    '''
+def filled_rectangle(t: SvgTurtle, width: int, height: int, color: str):
+    """
     Creates a rectangle that is filled in with a color
-    
+
+    :param t: the turtle
     :param height: the width of the rectangle
     :param width: the height of the rectangle
     :param color: fill color
-    '''
-    
+    """
+
     # Fill the color
-    fillcolor(color) 
-    begin_fill() 
+    t.fillcolor(color)
+    t.begin_fill()
 
     # Now draw the form
-    forward(width) 
-    left(90) 
-    forward(height) 
-    left(90) 
-    forward(width) 
-    left(90) 
-    forward(height) 
-    left(90) 
+    t.forward(width)
+    t.left(90)
+    t.forward(height)
+    t.left(90)
+    t.forward(width)
+    t.left(90)
+    t.forward(height)
+    t.left(90)
 
     # Complete
-    end_fill()
-
+    t.end_fill()
