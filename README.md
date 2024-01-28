@@ -19,3 +19,6 @@ In a first step, clone this repository by using
 To check the drawin/implementation, run the following draw_house.py the following way:
 `python draw_house.py`
 
+# Activate pre-commit checks 
+Run `pre-commit install` to enable pre-commit checks
+

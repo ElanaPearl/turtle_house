@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/pre-commit/mirrors-flake8
+    rev: v3.9.2
+    hooks:
+      - id: flake8
+
+
+  - repo: local
+    hooks:
+      - id: custom-check
+        name: Custom Pre-commit Check
+        entry: pre-push.py
+        language: python
+        types: [python]
