@@ -18,6 +18,19 @@ def move_to(t: SvgTurtle, x: int = 1, y: int = 1):
     t.pendown()
 
 
+def move_relative_to_start(
+    t: SvgTurtle, start: tuple[int, int], offset_from_start: tuple[int, int] = (0, 0)
+):
+    """Move the turtle to a position relative to the start position without drawing.
+
+    :param t: the turtle
+    :param start: The start position
+    :param offset_from_start: The offset from the start position
+    """
+    move_to(t, x=start[0] + offset_from_start[0], y=start[1] + offset_from_start[1])
+    t.setheading(0)
+
+
 def draw_house_outline(
     t: SvgTurtle, base_width: int = 250, base_height: int = 150, roof_height: int = 100
 ):
@@ -153,76 +166,83 @@ def draw_cloud(t: SvgTurtle, radius: int = 20, cloud_color: str = "blue"):
 
 def main(
     output_file: str = "house.svg",
-    canvas_size: tuple = (800, 400),
-    start: tuple = (-200, -100),
+    canvas_size: tuple[int, int] = (800, 400),
+    start: tuple[int, int] = (-200, -100),
+    base_width: int = 250,
+    base_height: int = 150,
+    door_offset: tuple[int, int] = (-50, 0),
+    garage_door_1_offset: tuple[int, int] = (20, 0),
+    garage_door_2_offset: tuple[int, int] = (100, 0),
+    window_1_offset: tuple[int, int] = (20, 0),
+    window_2_offset: tuple[int, int] = (70, 0),
+    window_3_offset: tuple[int, int] = (120, 0),
+    window_4_offset: tuple[int, int] = (170, 0),
+    tree_1_offset: tuple[int, int] = (50, 50),
+    tree_2_offset: tuple[int, int] = (100, 50),
+    cloud_1_offset: tuple[int, int] = (100, 100),
+    cloud_2_offset: tuple[int, int] = (-300, 100),
 ):
     """Draws a house with a door, garage door, windows, trees and clouds
 
     :param output_file: The name of the output file to save the image to
+    :param canvas_size: The size of the canvas to draw the house on
+    :param start: The starting position of the house
+    :param base_width: The width of the base of the house
+    :param base_height: The height of the base of the house
+    :param door_offset: The offset of the door from the start position
+    :param garage_door_1_offset: The offset of the first garage door from the start position
+    :param garage_door_2_offset: The offset of the second garage door from the start position
+    :param window_1_offset: The offset of the first window from the start position
+    :param window_2_offset: The offset of the second window from the start position
+    :param window_3_offset: The offset of the third window from the start position
+    :param window_4_offset: The offset of the fourth window from the start position
+    :param tree_1_offset: The offset of the first tree from the start position
+    :param tree_2_offset: The offset of the second tree from the start position
+    :param cloud_1_offset: The offset of the first cloud from the start position
+    :param cloud_2_offset: The offset of the second cloud from the start position
     """
 
     t = SvgTurtle(*canvas_size)
-
-    # Set the base parameters
-    base_width = 250
-    base_height = 150
 
     # Move to the starting point
     move_to(t, start[0], start[1])
 
     # Draw the house
     draw_house_outline(t, base_width=base_width, base_height=base_height)
-    move_to(t, start[0] + base_width - 50, start[1])
-    t.setheading(0)
 
     # Draw the door
+    move_relative_to_start(t, (start[0] + base_width, start[1]), door_offset)
     draw_door(t)
 
-    move_to(t, start[0] + 20, start[1])
-    t.setheading(0)
-
     # Draw the garage door
+    move_relative_to_start(t, start, garage_door_1_offset)
     draw_garage_door(t)
-    move_to(t, start[0] + 100, start[1])
-    t.setheading(0)
 
     # Draw the other garage door
+    move_relative_to_start(t, start, garage_door_2_offset)
     draw_garage_door(t)
 
-    move_to(t, start[0] + 20, start[1] + (base_height / 2))
-    t.setheading(0)
-
-    # Draw 4 windows in different psitions
-    draw_window(t)  # First window
-    move_to(t, start[0] + 70, start[1] + (base_height / 2))
-    t.setheading(0)
-    draw_window(t)  # Second window
-    move_to(t, start[0] + 120, start[1] + (base_height / 2))
-    t.setheading(0)
-    draw_window(t)  # Third window
-    move_to(t, start[0] + 170, start[1] + (base_height / 2))
-    t.setheading(0)
-    draw_window(t)  # Fourth window
-
-    move_to(t, start[0] + base_width + 50, start[1] + 50)
-    t.setheading(0)
+    # Draw 4 windows in different positions
+    start_of_second_floor = (start[0], start[1] + base_height / 2)
+    for window_offset in [
+        window_1_offset,
+        window_2_offset,
+        window_3_offset,
+        window_4_offset,
+    ]:
+        move_relative_to_start(t, start_of_second_floor, window_offset)
+        draw_window(t)
 
     # Draw the trees
-    draw_tree(t)  # First tree
-    move_to(t, start[0] + base_width + 100, start[1] + 50)
-    t.setheading(0)
-    draw_tree(t)  # Second tree
-
-    move_to(t, 100, 100)
-    t.setheading(0)
+    start_of_trees = (start[0] + base_width, start[1])
+    for tree_offset in [tree_1_offset, tree_2_offset]:
+        move_relative_to_start(t, start_of_trees, tree_offset)
+        draw_tree(t)
 
     # Draw the clouds
-    draw_cloud(
-        t,
-    )  # First cloud
-    move_to(t, -300, 100)
-    t.setheading(0)
-    draw_cloud(t)  # Second cloud
+    for cloud_offset in [cloud_1_offset, cloud_2_offset]:
+        move_relative_to_start(t, [0, 0], cloud_offset)
+        draw_cloud(t)
 
     t.save_as(output_file)
 
