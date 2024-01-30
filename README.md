@@ -16,6 +16,9 @@ In a first step, clone this repository by using
 `conda activate bds253`
 
 # Test the implementation
-To check the drawin/implementation, run the following draw_house.py the following way:
-`python draw_house.py`
+To check the drawin/implementation, run `python draw_house.py` which will draw a house and save the output to `house.svg`
 
+# Activate pre-commit checks
+Run `pre-commit install --hook-type pre-push` to enable pre-commit checks
+
+Note, this is only relevant if making changes to the git repo. If you run this command, then everytime you push it will run black, flake8, and a check to ensure no CSVs have been uploaded.

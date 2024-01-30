@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+
+
+# --- Define pre-push customized here
+
+def check_for_csv_files():
+    """
+    This function checks whether there are .csv files in the push and removes them
+    """
+    try:
+        # Run 'git diff --cached --name-only': reeturns a list of file names for changes are staged in the next commit
+        result = subprocess.run(['git', 'diff', '--cached', '--name-only'], capture_output=True, text=True)
+
+        # Check for CSV files in the list of changed files
+        changed_files = result.stdout.split('\n') # provides all outputs in new lines
+        csv_files = [file for file in changed_files if file.endswith('.csv')]
+
+        if csv_files:
+            print("Error: CSV files in changes to be pushed (see the following files):")
+            for csv_file in csv_files:
+                print(csv_file)
+            print("For security reasons, please remove the CSV files. If you want to commit them, you need to do this separately for each file.")
+            sys.exit(1)
+
+    except Exception as e:
+        print("An error occurred:", str(e))
+        sys.exit(1)
+
+
+def main():
+    print("Running custom pre-push checks.../n")
+
+    # Check whether there is a csv file before you allow a push
+    check_for_csv_files()
+
+    sys.exit(0)
+
+if __name__ == "__main__":
+    main()
