@@ -151,13 +151,15 @@ def draw_cloud(t: SvgTurtle, radius: int = 20, cloud_color: str = "blue"):
         t.right(90)
 
 
-def main(output_file: str = "house.svg"):
+def main(
+    output_file: str = "house.svg",
+    canvas_size: tuple = (800, 400),
+    start: tuple = (-200, -100),
+):
     """Draws a house with a door, garage door, windows, trees and clouds
 
     :param output_file: The name of the output file to save the image to
     """
-    canvas_size = (800, 400)
-    start = (-200, -100)
 
     t = SvgTurtle(*canvas_size)
 
